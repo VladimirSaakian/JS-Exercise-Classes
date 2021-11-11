@@ -136,8 +136,29 @@ class Lambdasian {
         + `demo` receives a `subject` string as an argument and returns the phrase 'Today we are learning about {subject}' where subject is the param passed in.
         + `grade` receives a `student` object and a `subject` string as arguments and returns '{student.name} receives a perfect score on {subject}'
 */
-class Instructor  {
+class Instructor extends Lambdasian {
+  constructor(obj) {
+    super({ name: obj.name, age: obj.age, location: obj.location });
+    this.specialty = obj.specialty;
+    this.favLanguage = obj.favLanguage;
+    this.catchPhrase = obj.catchPhrase;
+  }
+  demo(subject) {
+    return `Today we are learning about ${subject}`;
+  }
 
+  grade(student, subject) {
+    return `${student.name} receives a perfect score on ${subject}`;
+  }
+
+  grade2(student) {
+    if (student.graduate()) {
+      console.log(student.name + " can graduate");
+      return;
+    }
+    console.log(student.name + " can not yet graduate, would be regraded");
+    student.grade += Math.floor(Math.random() * 101) - student.grade;
+  }
 }
 /*
   TASK 5
